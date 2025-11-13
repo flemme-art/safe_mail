@@ -175,6 +175,8 @@ def analyze_mail():
 
     WHITELIST = [
         "formalites@infos-airfrance.com",
+        "no_reply@email.apple.com",
+        
     ]
 
     is_whitelisted = sender.lower() in [w.lower() for w in WHITELIST]
@@ -222,6 +224,8 @@ def analyze_mail():
     4. Donne un verdict clair (légitime/frauduleux/neutre) et un score de risque (0–10).
     5. Résume ton raisonnement en 2 phrases maximum, et inclue la recommandation en 1 phrase maximum.
     6.En cas de verdict “frauduleux”, ajoute toujours une recommandation claire : “Ne cliquez sur aucun lien, ne téléchargez aucune pièce jointe et signalez ou supprimez immédiatement le mail.”
+
+    7. la date (future ou passée) ainsi que l'abscence de sujet d'un mail ne donne pas preuve de fraudes . ce sont des info neutres .
 
     Réponds uniquement en JSON clair :
     {{
@@ -275,5 +279,6 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))  # Port injecté par Render
     print(f"🚀 Serveur Flask lancé sur le port {port}")
     app.run(host="0.0.0.0", port=port)
+
 
 
